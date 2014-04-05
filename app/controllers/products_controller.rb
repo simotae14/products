@@ -1,12 +1,19 @@
 class ProductsController < ApplicationController
+  def import  
+    Product.import(params[:file])  
+    redirect_to products_url, notice: "Products imported."  
+  end 
+
   # GET /products
   # GET /products.xml
   def index
-    @products = Product.all
+    @products = Product.order(:product_name)
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @products }
+      format.csv { send_data @products.to_csv }
+      format.xls  { send_data @products.to_csv(col_sep: "\t") }
     end
   end
 

@@ -1,3 +1,9 @@
+<p>
+  Download:
+  <%= link_to "CSV", products_path(format: "csv") %> |
+  <%= link_to "Excel", products_path(format: "xls") %>
+</p>
+
 <h1>Listing products</h1>
 
 <table>
@@ -25,3 +31,9 @@
 <br />
 
 <%= link_to 'New Product', new_product_path %>
+
+<h2>Import Products</h2>  
+<%= form_tag import_products_path, multipart: true do %>  
+  <%= file_field_tag :file %>  
+  <%= submit_tag "Import CSV" %>  
+<% end %> 
