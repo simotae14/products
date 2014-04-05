@@ -4,6 +4,10 @@ class ProductsController < ApplicationController
     redirect_to products_url, notice: "Products imported."  
   end 
 
+  def import_two  
+    Product.import_two(params[:file])  
+    redirect_to products_url, notice: "Products imported."  
+  end 
   # GET /products
   # GET /products.xml
   def index

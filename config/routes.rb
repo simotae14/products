@@ -1,6 +1,7 @@
 Products::Application.routes.draw do
   resources :products do  
-    collection { post :import }  
+    collection { post :import }
+    collection { post :import_two }    
   end  
   root to: 'products#index'
   # The priority is based upon order of creation:
